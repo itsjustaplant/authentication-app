@@ -31,7 +31,7 @@ export const Social = styled(SocialStyled)`
   flex-basis: 100%;
   transition: filter 0.4s ease-in-out;
   :hover{
-    filter: invert(16%) sepia(0%);
+    filter: brightness(1%);
   }
 `;
 

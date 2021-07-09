@@ -7,28 +7,56 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
+import {useSelector, useDispatch} from 'react-redux';
 
 import {Login} from './pages/Login.page';
 import {Register} from './pages/Register.page';
-
-import './App.css';
-
-// import {Input} from './components/Form/Input.styled';
+import {GlobalStyle} from './Theme/GlobalStyle.styled';
+import {ErrorModal} from './components/ErrorModal/ErrorModal.styled';
 
 
 function App() {
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  const isLoggedInState = useSelector((state) => state.user.loggedIn);
+  const dispatch = useDispatch();
+  let userPage; let registerPage; let loginPage;
+
+  const modalIsOpen = useSelector((state) => state.user.userAlreadyExists);
+
+  function closeModal() {
+    dispatch({type: 'CLOSE_MODAL'});
+  }
+
+  if (isLoggedIn === 'true' && isLoggedInState) {
+    userPage = <h1>{localStorage.getItem('userEmail')}</h1>;
+    registerPage = <Redirect to='/'/>;
+    loginPage = <Redirect to='/'/>;
+  } else {
+    userPage = <Redirect to='/register'/>;
+    registerPage = <Register/>;
+    loginPage = <Login/>;
+  }
+
   return (
     <div className="App">
+      <ErrorModal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Example Modal"
+        ariaHideApp={false}
+      >
+      </ErrorModal>
+      <GlobalStyle/>
       <Router>
         <Switch>
           <Route exact path='/'>
-            <Redirect to='/login'/>
+            {userPage}
           </Route>
           <Route exact path='/login'>
-            <Login/>
+            {loginPage}
           </Route>
           <Route exact path='/register'>
-            <Register/>
+            {registerPage}
           </Route>
         </Switch>
       </Router>

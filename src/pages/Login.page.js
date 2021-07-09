@@ -35,7 +35,7 @@ class LoginStyled extends React.Component {
       }} className={this.props.className}>
         <Logo/>
         <h1>Login</h1>
-        <Form text='Login'/>
+        <Form text='Login' type='login'/>
         <p id='social_text'>or continue with these socials</p>
         <div>
           <Social icon='Google'/>

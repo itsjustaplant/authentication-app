@@ -26,6 +26,7 @@ class InputStyled extends React.Component {
       <div className={this.props.className}>
         <Icon icon={this.props.icon} onfocus={this.state.onFocus}/>
         <input {...this.props.register} onFocus={this.handleFocus} onBlur={this.handleFocusOut} placeholder={this.props.placeholder}/>
+        <span className='error' style={{opacity: this.props.opacity}}>{this.props.error}</span>
       </div>
     );
   }
@@ -59,10 +60,23 @@ export const Input = styled(InputStyled) `
   :focus-within{
     border-color: #333333;
   }
+  .error{
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 12px;
+    line-height: 12px;
+    color: #ff4444;
+    transition: opacity 0.4s ease-in-out;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    transform: translateY(40px);
+  }
 `;
 InputStyled.propTypes = {
   className: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
   register: PropTypes.any.isRequired,
+  error: PropTypes.string.isRequired,
+  opacity: PropTypes.number.isRequired,
 };

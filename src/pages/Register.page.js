@@ -39,7 +39,7 @@ class RegisterStyled extends React.Component {
         <p id='brief_text'>
           Master web development by making real-life projects. There are multiple paths for you to choose.
         </p>
-        <Form text='Start Coding Now'/>
+        <Form text='Start Coding Now' type='register'/>
         <p id='social_text'>or continue with these socials</p>
         <div>
           <Social icon='Google'/>
