@@ -19,7 +19,7 @@ class SubmitButtonStyled extends React.Component {
 export const SubmitButton = styled(SubmitButtonStyled)`
   width: 350px;
   border-radius: 8px;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Noto Sans JP', sans-serif;
   font-size: 16px;
   line-height: 16px;
   text-align: center;

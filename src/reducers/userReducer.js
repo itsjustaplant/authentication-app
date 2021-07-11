@@ -20,7 +20,7 @@ export default function UserReducer(state = initialState, action) {
       return {
         ...state,
       };
-    case 'REGISTER_USER': {
+    case 'REGISTER_USER':
       const {status, email, password} = action.payload;
       const flag = (status === 200);
 
@@ -41,7 +41,6 @@ export default function UserReducer(state = initialState, action) {
         userEmail: (flag) ? email : '',
         userAlreadyExists: !flag,
       };
-    }
     case 'LOGIN_USER': {
       const {redirectToUser, email, password, bio, phone, photo, passwordIsWrong} = action.payload;
 
@@ -65,6 +64,11 @@ export default function UserReducer(state = initialState, action) {
         userPhone: phone,
         userPhotoURL: photo,
         passwordIsWrong: passwordIsWrong,
+      };
+    }
+    case 'SET_USER': {
+      return {
+        ...state,
       };
     }
     case 'CLOSE_REGISTER_MODAL':
