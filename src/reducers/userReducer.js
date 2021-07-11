@@ -3,15 +3,13 @@
 import Cookies from 'js-cookie';
 
 const initialState = {
-  redirectToUser: false,
   loggedIn: false,
+  userAlreadyExists: false,
+  passwordIsWrong: false,
   userEmail: '',
-  userPassword: '',
   userBio: '',
   userPhotoURL: '',
   userPhone: '',
-  userAlreadyExists: false,
-  passwordIsWrong: false,
 };
 
 export default function UserReducer(state = initialState, action) {
@@ -20,56 +18,37 @@ export default function UserReducer(state = initialState, action) {
       return {
         ...state,
       };
-    case 'REGISTER_USER':
-      const {status, email, password} = action.payload;
-      const flag = (status === 200);
+    case 'SET_USER': {
+      const {type, loggedIn, email} = action.payload;
 
-      if (status === 200) {
+      if (loggedIn) {
         Cookies.set('isLoggedIn', 'true');
         Cookies.set('userEmail', email);
-        Cookies.set('userPassword', password);
-      } else if (status === 201) {
-        Cookies.set('isLoggedIn', 'false');
-        Cookies.set('userEmail', email);
-        Cookies.set('userPassword', password);
-      }
-
-      return {
-        ...state,
-        redirectToUser: flag,
-        loggedIn: flag,
-        userEmail: (flag) ? email : '',
-        userAlreadyExists: !flag,
-      };
-    case 'LOGIN_USER': {
-      const {redirectToUser, email, password, bio, phone, photo, passwordIsWrong} = action.payload;
-
-      if (redirectToUser) {
-        Cookies.set('isLoggedIn', 'true');
-        Cookies.set('userEmail', email);
-        Cookies.set('userPassword', password);
       } else {
         Cookies.set('isLoggedIn', 'false');
         Cookies.set('userEmail', '');
-        Cookies.set('userPassword', '');
       }
 
-      return {
-        ...state,
-        loggedIn: redirectToUser,
-        redirectToUser: redirectToUser,
-        userEmail: email,
-        userPassword: password,
-        userBio: bio,
-        userPhone: phone,
-        userPhotoURL: photo,
-        passwordIsWrong: passwordIsWrong,
-      };
-    }
-    case 'SET_USER': {
-      return {
-        ...state,
-      };
+      if (type === 'REGISTER') {
+        return {
+          ...state,
+          loggedIn: loggedIn,
+          userEmail: (loggedIn) ? email : '',
+          userAlreadyExists: !loggedIn,
+        };
+      } else if (type === 'LOGIN') {
+        const {email, bio, phone, photo, passwordIsWrong} = action.payload;
+        return {
+          ...state,
+          loggedIn: loggedIn,
+          userEmail: email,
+          userBio: bio,
+          userPhone: phone,
+          userPhotoURL: photo,
+          passwordIsWrong: passwordIsWrong,
+        };
+      }
+      break;
     }
     case 'CLOSE_REGISTER_MODAL':
       return {

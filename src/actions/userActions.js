@@ -11,15 +11,15 @@ export const registerUser = (body) => {
           password: password,
         });
     const status = response.status;
-    const userEmail = (status === 200) ? email : '';
-    const userPassword = (status === 200) ? password : '';
+    const userLoggedIn = (status === 200);
+    const userEmail = (userLoggedIn) ? email : '';
 
     dispatch({
-      type: 'REGISTER_USER',
+      type: 'SET_USER',
       payload: {
+        type: 'REGISTER',
         email: userEmail,
-        password: userPassword,
-        status: status,
+        loggedIn: userLoggedIn,
       },
     });
   };
@@ -36,7 +36,7 @@ export const loginUser = (body) => {
         });
 
     const {user, status} = response.data;
-    console.log(response.data);
+
     let flag; let bio; let phone; let photo;
 
     if (status === 200) {
@@ -52,15 +52,15 @@ export const loginUser = (body) => {
     }
 
     dispatch({
-      type: 'LOGIN_USER',
+      type: 'SET_USER',
       payload: {
+        type: 'LOGIN',
         email: email,
-        password: password,
         bio: bio,
         photo: photo,
         phone: phone,
-        redirectToUser: flag,
         passwordIsWrong: !flag,
+        loggedIn: flag,
       },
     });
   };

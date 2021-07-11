@@ -21,6 +21,7 @@ function App() {
   let userPage; let registerPage; let loginPage;
 
   if (isLoggedIn === 'true' || isLoggedInState) {
+    console.log(isLoggedIn);
     userPage = <User/>;
     registerPage = <Redirect to='/'/>;
     loginPage = <Redirect to='/'/>;
