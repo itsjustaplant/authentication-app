@@ -22,4 +22,9 @@ export const GlobalStyle = createGlobalStyle`
     justify-content: center;
     align-items: center;
   }
+  .modal-button-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
 `;

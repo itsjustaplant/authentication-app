@@ -10,7 +10,7 @@ class ModalButtonStyled extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className='modal-button-container'>
         <button className={this.props.className} onClick={this.props.onClick}>Close</button>
       </div>
     );
@@ -18,7 +18,14 @@ class ModalButtonStyled extends React.Component {
 }
 
 export const ModalButton = styled(ModalButtonStyled)`
-
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 16px;
+  line-height: 16px;
+  padding: 10px 20px;
+  border: 1px solid rgba(31, 31, 31, 0.4);
+  margin-left: auto;
+  margin-top: 10px;
+  border-radius: 8px;
 `;
 
 ModalButtonStyled.propTypes = {

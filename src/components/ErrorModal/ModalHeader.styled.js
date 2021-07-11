@@ -4,22 +4,25 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-class ModalTextStyled extends React.Component {
+class ModalHeaderStyled extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
     return (
-      <p className={this.props.className}>Try another mail address to register</p>
+      <h1 className={this.props.className}>This mail address is already in use</h1>
     );
   }
 }
-export const ModalText = styled(ModalTextStyled)`
+
+export const ModalHeader = styled(ModalHeaderStyled)`
   font-family: 'Noto Sans', sans-serif;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 20px;
+  line-height: 28px;
+  padding: 0;
+  margin: 0;
 `;
 
-ModalTextStyled.propTypes = {
+ModalHeaderStyled.propTypes = {
   className: PropTypes.string.isRequired,
 };

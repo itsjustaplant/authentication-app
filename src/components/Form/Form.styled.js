@@ -9,7 +9,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import {Input} from './Input.styled';
 import {SubmitButton} from './SubmitButton.styled';
-import {registerUser} from '../../actions/userActions';
+import {registerUser, loginUser} from '../../actions/userActions';
 import {checkPasswordLength, checkPasswordContainsSpace, checkEmailValid} from '../../helpers';
 
 
@@ -41,7 +41,7 @@ export function FormStyled(props) {
       if (props.type === 'register') {
         dispatch(registerUser(data));
       } else {
-        console.log('yeay');
+        dispatch(loginUser(data));
       }
     }
   };

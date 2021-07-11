@@ -8,15 +8,17 @@ import {
   Redirect,
 } from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
+import Cookies from 'js-cookie';
 
 import {Login} from './pages/Login.page';
 import {Register} from './pages/Register.page';
+import {User} from './pages/User.page';
 import {GlobalStyle} from './Theme/GlobalStyle.styled';
 import {ErrorModal} from './components/ErrorModal/ErrorModal.styled';
 
 
 function App() {
-  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  const isLoggedIn = Cookies.get('isLoggedIn');
   const isLoggedInState = useSelector((state) => state.user.loggedIn);
   const dispatch = useDispatch();
   let userPage; let registerPage; let loginPage;
@@ -27,8 +29,8 @@ function App() {
     dispatch({type: 'CLOSE_MODAL'});
   }
 
-  if (isLoggedIn === 'true' && isLoggedInState) {
-    userPage = <h1>{localStorage.getItem('userEmail')}</h1>;
+  if (isLoggedIn === 'true' || isLoggedInState) {
+    userPage = <User/>;
     registerPage = <Redirect to='/'/>;
     loginPage = <Redirect to='/'/>;
   } else {

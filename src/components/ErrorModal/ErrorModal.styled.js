@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 
 import {ModalButton} from './ModalButton.styled';
+import {ModalHeader} from './ModalHeader.styled';
 import {ModalText} from './ModalText.styled';
 
 class ErrorModalStyled extends React.Component {
@@ -21,6 +22,7 @@ class ErrorModalStyled extends React.Component {
         onRequestClose={this.props.onRequestClose}
         ariaHideApp={this.props.ariaHideApp}
       >
+        <ModalHeader/>
         <ModalText/>
         <ModalButton onClick={this.props.onRequestClose}/>
       </Modal>
@@ -29,11 +31,14 @@ class ErrorModalStyled extends React.Component {
 }
 
 export const ErrorModal = styled(ErrorModalStyled)`
-  width: 280px;
-  height: 180px;
-  justify-self: center;
-  align-self: center;
-  background-color: yellow;
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  background-color: #fafafa;
+  border: 2px solid #828282;
+  border-radius: 8px;
+  padding: 40px 20px;
+  filter: drop-shadow(5px 5px 1px rgba(51, 51, 51, 0.3));
 `;
 
 ErrorModalStyled.propTypes = {
