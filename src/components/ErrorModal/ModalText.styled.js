@@ -10,7 +10,7 @@ class ModalTextStyled extends React.Component {
   }
   render() {
     return (
-      <p className={this.props.className}>Try another mail address to register</p>
+      <p className={this.props.className}>{this.props.text}</p>
     );
   }
 }
@@ -22,4 +22,5 @@ export const ModalText = styled(ModalTextStyled)`
 
 ModalTextStyled.propTypes = {
   className: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
 };

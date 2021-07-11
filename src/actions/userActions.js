@@ -52,7 +52,7 @@ export const loginUser = (body) => {
     }
 
     dispatch({
-      type: 'SET_USER_DATA',
+      type: 'LOGIN_USER',
       payload: {
         email: email,
         password: password,
@@ -60,6 +60,7 @@ export const loginUser = (body) => {
         photo: photo,
         phone: phone,
         redirectToUser: flag,
+        passwordIsWrong: !flag,
       },
     });
   };

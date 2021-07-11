@@ -1,6 +1,6 @@
-/* eslint-disable require-jsdoc, max-len */
+/* eslint-disable require-jsdoc, max-len, no-unused-vars */
 
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import {Form} from '../components/Form/Form.styled';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -10,47 +10,64 @@ import {
 import TweenMax from 'gsap';
 import {Logo} from '../components/Logo/Logo.styled';
 import {Social} from '../components/Logo/Social.styled';
+import {ErrorModal} from '../components/ErrorModal/ErrorModal.styled';
+import {useSelector, useDispatch} from 'react-redux';
 
-class RegisterStyled extends React.Component {
-  constructor(props) {
-    super(props);
-    this.element = null;
-    this.Tween = null;
+function RegisterStyled(props) {
+  const modalIsOpen = useSelector((state) => state.user.userAlreadyExists);
+  const dispatch = useDispatch();
+  const modalHeader = 'This email address is already in use';
+  const modalText = 'Try another email address to register';
+
+  function closeModal() {
+    dispatch({type: 'CLOSE_REGISTER_MODAL'});
   }
 
-  componentDidMount() {
-    this.Tween = TweenMax.to(
-        this.element,
+  let elementRef = useRef(null);
+  let Tween;
+
+  useEffect(() => {
+    Tween = TweenMax.to(
+        elementRef,
         {
           opacity: 1,
           y: -10,
-        });
-  }
-
-  render() {
-    return (
-      <div ref={(div) => {
-        this.element = div;
-      }} className={this.props.className}>
-        <Logo/>
-        <h1>
-          Join thousands of learners from around the world.
-        </h1>
-        <p id='brief_text'>
-          Master web development by making real-life projects. There are multiple paths for you to choose.
-        </p>
-        <Form text='Start Coding Now' type='register'/>
-        <p id='social_text'>or continue with these socials</p>
-        <div>
-          <Social icon='Google'/>
-          <Social icon='Facebook'/>
-          <Social icon='Twitter'/>
-          <Social icon='Github'/>
-        </div>
-        <p id='register_text'>You have account?<Link to='/login'>Login</Link></p>
-      </div>
+        },
     );
-  }
+  }, []);
+
+  return (
+    <div
+      ref={(element) => {
+        elementRef = element;
+      }}
+      className={props.className}>
+      <ErrorModal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        ariaHideApp={false}
+        modalHeader={modalHeader}
+        modalText={modalText}
+      >
+      </ErrorModal>
+      <Logo/>
+      <h1>
+          Join thousands of learners from around the world.
+      </h1>
+      <p id='brief_text'>
+          Master web development by making real-life projects. There are multiple paths for you to choose.
+      </p>
+      <Form text='Start Coding Now' type='register'/>
+      <p id='social_text'>or continue with these socials</p>
+      <div>
+        <Social icon='Google'/>
+        <Social icon='Facebook'/>
+        <Social icon='Twitter'/>
+        <Social icon='Github'/>
+      </div>
+      <p id='register_text'>You have account?<Link to='/login'>Login</Link></p>
+    </div>
+  );
 }
 
 export const Register = styled(RegisterStyled)`

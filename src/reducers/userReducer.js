@@ -11,6 +11,7 @@ const initialState = {
   userPhotoURL: '',
   userPhone: '',
   userAlreadyExists: false,
+  passwordIsWrong: false,
 };
 
 export default function UserReducer(state = initialState, action) {
@@ -41,8 +42,8 @@ export default function UserReducer(state = initialState, action) {
         userAlreadyExists: !flag,
       };
     }
-    case 'SET_USER_DATA': {
-      const {redirectToUser, email, password, bio, phone, photo} = action.payload;
+    case 'LOGIN_USER': {
+      const {redirectToUser, email, password, bio, phone, photo, passwordIsWrong} = action.payload;
 
       if (redirectToUser) {
         Cookies.set('isLoggedIn', 'true');
@@ -63,12 +64,18 @@ export default function UserReducer(state = initialState, action) {
         userBio: bio,
         userPhone: phone,
         userPhotoURL: photo,
+        passwordIsWrong: passwordIsWrong,
       };
     }
-    case 'CLOSE_MODAL':
+    case 'CLOSE_REGISTER_MODAL':
       return {
         ...state,
         userAlreadyExists: false,
+      };
+    case 'CLOSE_LOGIN_MODAL':
+      return {
+        ...state,
+        passwordIsWrong: false,
       };
   }
 }

@@ -22,8 +22,8 @@ class ErrorModalStyled extends React.Component {
         onRequestClose={this.props.onRequestClose}
         ariaHideApp={this.props.ariaHideApp}
       >
-        <ModalHeader/>
-        <ModalText/>
+        <ModalHeader text={this.props.modalHeader}/>
+        <ModalText text={this.props.modalText}/>
         <ModalButton onClick={this.props.onRequestClose}/>
       </Modal>
     );
@@ -46,4 +46,6 @@ ErrorModalStyled.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onRequestClose: PropTypes.func.isRequired,
   ariaHideApp: PropTypes.bool.isRequired,
+  modalHeader: PropTypes.string.isRequired,
+  modalText: PropTypes.string.isRequired,
 };

@@ -7,27 +7,18 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 import Cookies from 'js-cookie';
 
 import {Login} from './pages/Login.page';
 import {Register} from './pages/Register.page';
 import {User} from './pages/User.page';
 import {GlobalStyle} from './Theme/GlobalStyle.styled';
-import {ErrorModal} from './components/ErrorModal/ErrorModal.styled';
-
 
 function App() {
   const isLoggedIn = Cookies.get('isLoggedIn');
   const isLoggedInState = useSelector((state) => state.user.loggedIn);
-  const dispatch = useDispatch();
   let userPage; let registerPage; let loginPage;
-
-  const modalIsOpen = useSelector((state) => state.user.userAlreadyExists);
-
-  function closeModal() {
-    dispatch({type: 'CLOSE_MODAL'});
-  }
 
   if (isLoggedIn === 'true' || isLoggedInState) {
     userPage = <User/>;
@@ -41,13 +32,6 @@ function App() {
 
   return (
     <div className="App">
-      <ErrorModal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        contentLabel="Example Modal"
-        ariaHideApp={false}
-      >
-      </ErrorModal>
       <GlobalStyle/>
       <Router>
         <Switch>

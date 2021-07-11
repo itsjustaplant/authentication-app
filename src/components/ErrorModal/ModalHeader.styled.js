@@ -10,7 +10,7 @@ class ModalHeaderStyled extends React.Component {
   }
   render() {
     return (
-      <h1 className={this.props.className}>This mail address is already in use</h1>
+      <h1 className={this.props.className}>{this.props.text}</h1>
     );
   }
 }
@@ -25,4 +25,5 @@ export const ModalHeader = styled(ModalHeaderStyled)`
 
 ModalHeaderStyled.propTypes = {
   className: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
 };
