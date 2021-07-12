@@ -1,5 +1,6 @@
 /* eslint-disable require-jsdoc, max-len */
 import Axios from 'axios';
+import Cookies from 'js-cookie';
 
 export const registerUser = (body) => {
   return async (dispatch, getState) => {
@@ -34,33 +35,43 @@ export const loginUser = (body) => {
           email: email,
           password: password,
         });
+    const {status, token} = response.data;
 
-    const {user, status} = response.data;
-
-    let flag; let bio; let phone; let photo;
-
-    if (status === 200) {
-      bio = user.bio;
-      phone = user.phone;
-      photo = user.photo;
-      flag = true;
-    } else {
-      bio = '';
-      phone = '';
-      photo = '';
-      flag = false;
-    }
+    const flag = (status === 200);
+    flag ? Cookies.set('accessToken', token) : Cookies.set('accessToken', '');
 
     dispatch({
       type: 'SET_USER',
       payload: {
         type: 'LOGIN',
         email: email,
-        bio: bio,
+        loggedIn: flag,
+      },
+    });
+  };
+};
+
+export const getUser = (body) => {
+  const {email, token} = body;
+  return async (dispatch, getState) => {
+    const response = await Axios.post(
+        'http://localhost:3001/user',
+        {
+          token: token,
+          email: email,
+        },
+    );
+    const {status, photo, name, bio, phone} = response.data;
+
+    dispatch({
+      type: 'SET_USER',
+      payload: {
+        type: 'SET',
+        status: status,
         photo: photo,
         phone: phone,
-        passwordIsWrong: !flag,
-        loggedIn: flag,
+        name: name,
+        bio: bio,
       },
     });
   };

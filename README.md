@@ -14,9 +14,11 @@ This project is created for [devChallenges](https://devchallenges.io/challenges/
 - [x] Add custom modals for the login and register pages
 - [ ] Add tests for components
 - [ ] Add test for api
-- [ ] User Page
+- [X] User Page
 - [ ] Edit Page
 - [ ] Style touches for buttons and forms
+- [ ] Form validation on backend
+- [X] Implement JWT
 
 ## Security
 *Unlike the salt and pepper, security is not in the table*
