@@ -19,11 +19,13 @@ export default function UserReducer(state = initialState, action) {
         ...state,
       };
     case 'SET_USER': {
-      const {type, loggedIn, email} = action.payload;
+      const {type, token, loggedIn, email} = action.payload;
 
       if (type === 'REGISTER') {
         Cookies.set('isLoggedIn', `${loggedIn}`);
         Cookies.set('userEmail', loggedIn ? email : '');
+        Cookies.set('accessToken', token);
+
         return {
           ...state,
           loggedIn: loggedIn,
@@ -58,6 +60,20 @@ export default function UserReducer(state = initialState, action) {
       return {
         ...state,
         passwordIsWrong: false,
+      };
+    case 'EXIT':
+      Cookies.set('isLoggedIn', 'false');
+      Cookies.set('userEmail', '');
+      Cookies.set('accessToken', '');
+
+      return {
+        loggedIn: false,
+        userAlreadyExists: false,
+        passwordIsWrong: false,
+        userBio: '',
+        userPhotoURL: '',
+        userPhone: '',
+        userName: '',
       };
   }
 }

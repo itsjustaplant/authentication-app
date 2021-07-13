@@ -11,7 +11,8 @@ export const registerUser = (body) => {
           email: email,
           password: password,
         });
-    const status = response.status;
+    console.log(response.data);
+    const {status, accessToken} = response.data;
     const userLoggedIn = (status === 200);
     const userEmail = (userLoggedIn) ? email : '';
 
@@ -21,6 +22,7 @@ export const registerUser = (body) => {
         type: 'REGISTER',
         email: userEmail,
         loggedIn: userLoggedIn,
+        token: accessToken,
       },
     });
   };

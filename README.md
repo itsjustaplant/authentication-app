@@ -16,10 +16,15 @@ This project is created for [devChallenges](https://devchallenges.io/challenges/
 - [ ] Add test for api
 - [X] User Page
 - [ ] Edit Page
-- [ ] Style touches for buttons and forms
+- [X] Style touches for buttons and forms
 - [ ] Form validation on backend
 - [X] Implement JWT
 
+## Bugs
+
+- [X] No access token is provided after register *Solved by providing jwt back after register to client*
+
+   
 ## Security
 *Unlike the salt and pepper, security is not in the table*
 

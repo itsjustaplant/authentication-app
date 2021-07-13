@@ -70,7 +70,6 @@ export const Login = styled(LoginStyled)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #bdbdbd;
   border-radius: 24px;
   padding: 60px 0;
   width: clamp(360px, 60%, 480px);
@@ -104,6 +103,13 @@ export const Login = styled(LoginStyled)`
     display: flex;
     flex-direction: row;
     width: 240px;
+  }
+  
+  @media (max-width: 768px){
+    border: none;
+  }
+  @media (min-width: 769px){
+   border: 1px solid #bdbdbd;
   }
 `;
 

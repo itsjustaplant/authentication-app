@@ -115,6 +115,13 @@ export const Register = styled(RegisterStyled)`
     flex-direction: row;
     width: 240px;
   }
+  
+  @media (max-width: 768px){
+    border: none;
+  }
+  @media (min-width: 769px){
+   border: 1px solid #bdbdbd;
+  }
 `;
 
 RegisterStyled.propTypes = {

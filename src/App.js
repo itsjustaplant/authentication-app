@@ -7,27 +7,30 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import {useSelector} from 'react-redux';
 import Cookies from 'js-cookie';
 
 import {Login} from './pages/Login.page';
 import {Register} from './pages/Register.page';
 import {User} from './pages/User.page';
+import {Edit} from './pages/Edit.page';
 import {GlobalStyle} from './Theme/GlobalStyle.styled';
+import {useSelector} from 'react-redux';
 
 function App() {
   const isLoggedIn = Cookies.get('isLoggedIn');
-  const isLoggedInState = useSelector((state) => state.user.loggedIn);
-  let userPage; let registerPage; let loginPage;
+  const loggedInState = useSelector((state) => state.user.loggedIn);
+  let userPage; let registerPage; let loginPage; let editPage;
 
-  if (isLoggedIn === 'true' || isLoggedInState) {
+  if (isLoggedIn === 'true' || loggedInState) {
     userPage = <User/>;
-    registerPage = <Redirect to='/'/>;
+    registerPage = <Redirect to='/login'/>;
     loginPage = <Redirect to='/'/>;
+    editPage = <Edit/>;
   } else {
     userPage = <Redirect to='/register'/>;
     registerPage = <Register/>;
     loginPage = <Login/>;
+    editPage = <Redirect to='/login'/>;
   }
 
   return (
@@ -43,6 +46,9 @@ function App() {
           </Route>
           <Route exact path='/register'>
             {registerPage}
+          </Route>
+          <Route exact path='/edit'>
+            {editPage}
           </Route>
         </Switch>
       </Router>

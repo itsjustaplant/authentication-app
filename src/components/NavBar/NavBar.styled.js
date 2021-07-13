@@ -5,11 +5,13 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import {Logo} from '../Logo/Logo.styled';
+import {ExitButton} from './ExitButton.styled';
 
 function NavBarStyled(props) {
   return (
     <div className={props.className}>
       <Logo/>
+      <ExitButton/>
     </div>
   );
 }
