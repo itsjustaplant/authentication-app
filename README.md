@@ -27,6 +27,20 @@ This project is created for [devChallenges](https://devchallenges.io/challenges/
 ## Improvements
 
 - [ ] Need to store the user picture
+
+## User Stories
+
+- [X] Register a new account
+
+- [X] Log in
+
+- [ ] Log in with twitter, facebook, google or github
+
+- [X] See profile details
+
+- [X] Edit profile details
+
+- [ ] Upload new photo or provide url
    
 ## Security
 *Unlike the salt and pepper, security is not in the table*
