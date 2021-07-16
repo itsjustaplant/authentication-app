@@ -16,6 +16,7 @@ class TexAreaStyled extends React.Component {
         rows={this.props.row}
         placeholder={this.props.placeholder}
         {...this.props.register}
+        maxLength='30'
       />
     );
   }

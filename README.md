@@ -26,8 +26,7 @@ This project is created for [devChallenges](https://devchallenges.io/challenges/
 
 ## Improvements
 
-- [ ] Need a Cookies hook
-- [ ] Need to store picture
+- [ ] Need to store the user picture
    
 ## Security
 *Unlike the salt and pepper, security is not in the table*
