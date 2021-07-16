@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 import TweenMax from 'gsap';
 
-import {Form} from '../components/Form/Form.styled';
+import {LoginRegisterForm} from '../components/LoginRegisterForm/LoginRegisterForm.styled';
 import {Logo} from '../components/Logo/Logo.styled';
 import {Social} from '../components/Logo/Social.styled';
 import {useDispatch, useSelector} from 'react-redux';
@@ -53,7 +53,7 @@ function LoginStyled(props) {
       >
       </ErrorModal>
       <h1>Login</h1>
-      <Form text='Login' type='login'/>
+      <LoginRegisterForm text='Login' type='login'/>
       <p id='social_text'>or continue with these socials</p>
       <div>
         <Social icon='Google'/>

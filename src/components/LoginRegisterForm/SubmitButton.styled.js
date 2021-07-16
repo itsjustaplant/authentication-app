@@ -11,7 +11,10 @@ class SubmitButtonStyled extends React.Component {
 
   render() {
     return (
-      <input className={this.props.className} type='submit' value={this.props.text}/>
+      <input
+        className={this.props.className}
+        type='submit'
+        value={this.props.text}/>
     );
   }
 }
@@ -28,6 +31,10 @@ export const SubmitButton = styled(SubmitButtonStyled)`
   color: #ffffff;
   border: none;
   margin-top: 7px;
+  transition: background-color 0.4s ease-in-out;
+  :hover{
+    background-color: #1b62c2;
+  }
 `;
 
 SubmitButtonStyled.propTypes = {

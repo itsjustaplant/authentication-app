@@ -1,7 +1,7 @@
 /* eslint-disable require-jsdoc, max-len, no-unused-vars */
 
 import React, {useEffect, useRef} from 'react';
-import {Form} from '../components/Form/Form.styled';
+import {LoginRegisterForm} from '../components/LoginRegisterForm/LoginRegisterForm.styled';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import {
@@ -57,7 +57,7 @@ function RegisterStyled(props) {
       <p id='brief_text'>
           Master web development by making real-life projects. There are multiple paths for you to choose.
       </p>
-      <Form text='Start Coding Now' type='register'/>
+      <LoginRegisterForm text='Start Coding Now' type='register'/>
       <p id='social_text'>or continue with these socials</p>
       <div>
         <Social icon='Google'/>

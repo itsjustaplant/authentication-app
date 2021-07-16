@@ -5,9 +5,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
-// import {
-//   Redirect,
-// } from 'react-router-dom';
 
 function ExitButtonStyled(props) {
   const dispatch = useDispatch();
@@ -18,7 +15,6 @@ function ExitButtonStyled(props) {
     handleReturn();
   }
   function handleReturn() {
-    console.log(history);
     history.push('/');
   }
   return (

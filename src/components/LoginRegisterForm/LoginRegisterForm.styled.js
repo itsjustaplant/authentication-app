@@ -13,7 +13,7 @@ import {registerUser, loginUser} from '../../actions/userActions';
 import {checkPasswordLength, checkPasswordContainsSpace, checkEmailValid} from '../../helpers';
 
 
-export function FormStyled(props) {
+export function LoginRegisterFormStyled(props) {
   const {register, handleSubmit} = useForm();
   const dispatch = useDispatch();
 
@@ -71,7 +71,7 @@ export function FormStyled(props) {
   );
 }
 
-export const Form = styled(FormStyled)`
+export const LoginRegisterForm = styled(LoginRegisterFormStyled)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -79,7 +79,7 @@ export const Form = styled(FormStyled)`
   gap: 24px;
 `;
 
-FormStyled.propTypes = {
+LoginRegisterFormStyled.propTypes = {
   className: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,

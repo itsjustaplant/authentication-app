@@ -41,7 +41,7 @@ export const Input = styled(InputStyled) `
   width: 324px;
   
   input{
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     line-height: 16px;
     height: 20px;

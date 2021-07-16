@@ -1,44 +1,30 @@
 /* eslint-disable require-jsdoc, max-len, no-unused-vars */
 
-import React, {useEffect, useRef} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import TweenMax from 'gsap';
+
+import {NavBar} from '../components/NavBar/NavBar.styled';
+import {EditFrom} from '../components/EditForm/EditForm.styled';
 
 function EditStyled(props) {
-  let elementRef = useRef(null);
-  let Tween;
-
-  useEffect(() => {
-    Tween = TweenMax.to(
-        elementRef,
-        {
-          opacity: 1,
-          y: -10,
-        },
-    );
-  }, []);
   return (
-    <h1
-      className={props.className}
-      ref={(element) => {
-        elementRef = element;
-      }}
-    >
-      SA
-    </h1>
+    <div className={props.className}>
+      <NavBar/>
+      <EditFrom/>
+    </div>
   );
 };
 
 export const Edit = styled(EditStyled)`
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 1px solid #bdbdbd;
   border-radius: 24px;
   padding: 60px 0;
-  width: clamp(360px, 60%, 480px);
-  opacity: 0;
 `;
 
 EditStyled.propTypes = {
