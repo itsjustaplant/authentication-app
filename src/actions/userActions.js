@@ -78,3 +78,18 @@ export const getUser = (body) => {
     });
   };
 };
+
+export const editUser = (body) => {
+  const {data, token, email} = body;
+  return async (dispatch, getState) => {
+    const response = await Axios.post(
+        'http://localhost:3001/edit',
+        {
+          data: data,
+          token: token,
+          email: email,
+        },
+    );
+    console.log(response.data);
+  };
+};

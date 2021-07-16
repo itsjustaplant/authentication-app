@@ -7,7 +7,6 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import Cookies from 'js-cookie';
 
 import {Login} from './pages/Login.page';
 import {Register} from './pages/Register.page';
@@ -17,11 +16,10 @@ import {GlobalStyle} from './Theme/GlobalStyle.styled';
 import {useSelector} from 'react-redux';
 
 function App() {
-  const isLoggedIn = Cookies.get('isLoggedIn');
   const loggedInState = useSelector((state) => state.user.loggedIn);
   let userPage; let registerPage; let loginPage; let editPage;
 
-  if (isLoggedIn === 'true' || loggedInState) {
+  if (loggedInState) {
     userPage = <User/>;
     registerPage = <Redirect to='/login'/>;
     loginPage = <Redirect to='/'/>;

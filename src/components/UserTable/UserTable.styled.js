@@ -4,11 +4,12 @@ import React, {useEffect, useRef} from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import TweenMax from 'gsap';
-
-import {TableHeader} from './TableHeader.styled';
 import Cookies from 'js-cookie';
 import {useDispatch, useSelector} from 'react-redux';
 import {getUser} from '../../actions/userActions';
+
+import {TableHeader} from './TableHeader.styled';
+
 
 function UserTableStyled(props) {
   const dispatch = useDispatch();

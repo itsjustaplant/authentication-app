@@ -1,6 +1,6 @@
 /* eslint-disable require-jsdoc, max-len, no-unused-vars */
 
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -14,17 +14,15 @@ function EditStyled(props) {
       <EditFrom/>
     </div>
   );
-};
+}
 
 export const Edit = styled(EditStyled)`
-  width: 100vw;
-  height: 100vh;
   display: flex;
   flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  align-content: center;
   align-items: center;
-  border: 1px solid #bdbdbd;
-  border-radius: 24px;
-  padding: 60px 0;
 `;
 
 EditStyled.propTypes = {

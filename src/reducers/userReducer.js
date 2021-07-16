@@ -22,7 +22,6 @@ export default function UserReducer(state = initialState, action) {
       const {type, token, loggedIn, email} = action.payload;
 
       if (type === 'REGISTER') {
-        Cookies.set('isLoggedIn', `${loggedIn}`);
         Cookies.set('userEmail', loggedIn ? email : '');
         Cookies.set('accessToken', token);
 
@@ -32,7 +31,6 @@ export default function UserReducer(state = initialState, action) {
           userAlreadyExists: !loggedIn,
         };
       } else if (type === 'LOGIN') {
-        Cookies.set('isLoggedIn', `${loggedIn}`);
         Cookies.set('userEmail', loggedIn ? email : '');
         return {
           ...state,
@@ -62,7 +60,6 @@ export default function UserReducer(state = initialState, action) {
         passwordIsWrong: false,
       };
     case 'EXIT':
-      Cookies.set('isLoggedIn', 'false');
       Cookies.set('userEmail', '');
       Cookies.set('accessToken', '');
 

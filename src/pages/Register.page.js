@@ -74,7 +74,6 @@ export const Register = styled(RegisterStyled)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #bdbdbd;
   border-radius: 24px;
   padding: 60px 0;
   width: clamp(360px, 60%, 480px);
@@ -120,7 +119,7 @@ export const Register = styled(RegisterStyled)`
     border: none;
   }
   @media (min-width: 769px){
-   border: 1px solid #bdbdbd;
+    border: 1px solid #bdbdbd;
   }
 `;
 

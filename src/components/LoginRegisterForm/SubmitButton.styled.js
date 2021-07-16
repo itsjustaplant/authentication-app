@@ -32,6 +32,7 @@ export const SubmitButton = styled(SubmitButtonStyled)`
   border: none;
   margin-top: 7px;
   transition: background-color 0.4s ease-in-out;
+  max-width: 100%;
   :hover{
     background-color: #1b62c2;
   }

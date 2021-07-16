@@ -17,13 +17,19 @@ function NavBarStyled(props) {
 }
 
 export const NavBar = styled(NavBarStyled)`
-  width: calc(100vw - 100px);
   height: 80px;
   display: flex;
   flex-direction: row;
   align-content: center;
   align-items: center;
-  padding: 0 50px;
+  @media (max-width: 768px){
+    padding: 0 20px;
+    width: calc(100vw - 40px);
+  }
+  @media (min-width: 769px){
+    padding: 0 50px;
+    width: calc(100vw - 100px);
+  }
   
   img{
     padding: 0 !important;

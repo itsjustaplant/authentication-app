@@ -15,7 +15,7 @@ This project is created for [devChallenges](https://devchallenges.io/challenges/
 - [ ] Add tests for components
 - [ ] Add test for api
 - [X] User Page
-- [ ] Edit Page
+- [X] Edit Page
 - [X] Style touches for buttons and forms
 - [ ] Form validation on backend
 - [X] Implement JWT
@@ -24,6 +24,10 @@ This project is created for [devChallenges](https://devchallenges.io/challenges/
 
 - [X] No access token is provided after register *Solved by providing jwt back after register to client*
 
+## Improvements
+
+- [ ] Need a Cookies hook
+- [ ] Need to store picture
    
 ## Security
 *Unlike the salt and pepper, security is not in the table*
