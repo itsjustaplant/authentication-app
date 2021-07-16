@@ -2,11 +2,13 @@
 import Axios from 'axios';
 import Cookies from 'js-cookie';
 
+const BACKEND_URL = 'https://authentication-app-backend.herokuapp.com/';
+
 export const registerUser = (body) => {
   return async (dispatch, getState) => {
     const {email, password} = body;
     const response = await Axios.post(
-        'http://localhost:3001/register',
+        `${BACKEND_URL}register`,
         {
           email: email,
           password: password,
@@ -32,7 +34,7 @@ export const loginUser = (body) => {
   return async (dispatch, getState) => {
     const {email, password} = body;
     const response = await Axios.post(
-        'http://localhost:3001/login',
+        `${BACKEND_URL}login`,
         {
           email: email,
           password: password,
@@ -57,7 +59,7 @@ export const getUser = (body) => {
   const {email, token} = body;
   return async (dispatch, getState) => {
     const response = await Axios.post(
-        'http://localhost:3001/user',
+        `${BACKEND_URL}user`,
         {
           token: token,
           email: email,
@@ -83,7 +85,7 @@ export const editUser = (body) => {
   const {data, token, email} = body;
   return async (dispatch, getState) => {
     const response = await Axios.post(
-        'http://localhost:3001/edit',
+        `${BACKEND_URL}edit`,
         {
           data: data,
           token: token,
